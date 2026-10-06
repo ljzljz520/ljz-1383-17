@@ -23,3 +23,6 @@ __pycache__/
 *.log
 .env
 .env.*
+
+# 相册运行时数据（原图/变体/SQLite）
+server/data/

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册管理 | 灵墨创意</title>
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/gallery.css?v=2">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">灵墨创意</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="gallery.html">摄影相册</a></li>
+                <li><a href="admin.html" class="active">相册管理</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-wrap">
+        <h1>相册管理</h1>
+
+        <section class="admin-section glass" id="login-section">
+            <h2>管理员登录</h2>
+            <input type="text" id="token-input" placeholder="管理令牌" autocomplete="off">
+            <button class="btn-small" id="login-btn">登录</button>
+            <p class="muted">令牌仅保存在会话存储中。</p>
+        </section>
+
+        <div id="admin-app" hidden>
+            <section class="admin-section glass">
+                <h2>上传原图</h2>
+                <div class="drop-zone" id="drop-zone">点击选择或拖入图片（JPEG/PNG）</div>
+                <input type="file" id="file-input" accept="image/*" hidden>
+                <div id="upload-form" hidden>
+                    <input type="text" id="up-title" placeholder="标题">
+                    <textarea id="up-caption" rows="2" placeholder="说明文字"></textarea>
+                    <div id="up-categories"></div>
+                    <label><input type="checkbox" id="up-people"> 含人物</label>
+                    <label><input type="checkbox" id="up-web" checked> 授权公开网页展示</label>
+                    <label><input type="checkbox" id="up-original"> 授权原图下载</label>
+                    <button class="btn-small" id="up-submit">上传</button>
+                    <span class="muted" id="up-status"></span>
+                </div>
+            </section>
+
+            <section class="admin-section glass">
+                <h2>分类管理</h2>
+                <div id="cat-list"></div>
+                <input type="text" id="cat-slug" placeholder="slug（如 landscape）">
+                <input type="text" id="cat-name" placeholder="名称（如 风光）">
+                <button class="btn-small" id="cat-add">新增分类</button>
+            </section>
+
+            <section class="admin-section glass">
+                <h2>作品管理</h2>
+                <div class="admin-grid" id="photo-list"></div>
+            </section>
+
+            <section class="admin-section glass">
+                <h2>排序版本</h2>
+                <p class="muted">调整顺序后保存为新版本，激活前线上不受影响；激活是原子的。</p>
+                <div id="sort-list"></div>
+                <input type="text" id="sort-name" placeholder="版本名称">
+                <button class="btn-small" id="sort-save">保存为新版本</button>
+                <div id="sort-versions"></div>
+            </section>
+        </div>
+    </main>
+    <script type="module" src="js/admin.js?v=2"></script>
+</body>
+</html>

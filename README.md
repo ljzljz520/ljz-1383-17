@@ -29,3 +29,31 @@
 - **CSS 选择器**：广泛使用伪类 (`:hover`, `:focus`), 子选择器及复杂层叠关系。
 - **盒模型布局**：利用 Flexbox 和 CSS Grid 实现响应式布局。
 - **表单验证**：实时检测用户输入，并通过自定义 UI 组件进行错误提示。
+
+---
+
+## 摄影相册与灯箱子系统（新增）
+
+在原有静态站之上新增完整的相册后端与灯箱浏览，设计细节见 [DESIGN.md](DESIGN.md)。
+
+### 页面
+
+- `gallery.html` — 公开相册：分类筛选、keyset 分页、灯箱浏览（序列快照 + 预加载 + 焦点恢复）
+- `admin.html` — 管理页：上传原图、编辑说明、分类/授权/排序版本管理
+
+### 后端（`server/`，Node + Express + SQLite + sharp）
+
+```bash
+cd server
+npm install
+npm start          # http://localhost:8080（ADMIN_TOKEN 环境变量设置管理令牌）
+npm test           # 16 个验收用例
+node scripts/seed.js   # 写入示例数据（需服务已启动）
+```
+
+- 上传原图 → 生成 thumb/medium/large 变体（并发 2、1 亿像素预算、失败回退占位图 + 按需再生成限流）
+- 公开元数据白名单脱敏（GPS 仅管理端可见）；一图多授权，撤销即全端失效
+- 媒体 URL 携带内容版本 `/media/:id/:variant/vN/...`：公开变体 immutable 长缓存，
+  撤下 410 / 过期版本 404 / 原图未授权 403（服务端强制）
+- 排序版本：保存命名排序、原子激活，信息流携带版本号
+- 上传幂等（Idempotency-Key + SHA-256 去重），断网重试安全

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄影相册 | 灵墨创意</title>
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/gallery.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body data-asset-version="2">
+    <header>
+        <nav>
+            <a href="index.html" class="logo">灵墨创意</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="hobbies.html">兴趣爱好</a></li>
+                <li><a href="portfolio.html">个人作品</a></li>
+                <li><a href="gallery.html" class="active">摄影相册</a></li>
+                <li><a href="contact.html">联系我</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-hero">
+            <h1>摄影相册</h1>
+            <p>按分类浏览，点击进入灯箱模式。序列在打开时快照，翻页不受新增/下架影响。</p>
+            <div id="filters" role="tablist" aria-label="分类筛选"></div>
+        </section>
+
+        <div id="grid" aria-live="polite"></div>
+        <button id="load-more" hidden>加载更多</button>
+    </main>
+
+    <!-- 灯箱 -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="作品灯箱">
+        <div class="lb-backdrop"></div>
+        <div class="lb-stage">
+            <button class="lb-close" aria-label="关闭">×</button>
+            <div class="lb-image-wrap">
+                <div class="lb-spinner">加载中…</div>
+                <img class="lb-image" alt="">
+                <button class="lb-btn lb-prev" aria-label="上一张">‹</button>
+                <button class="lb-btn lb-next" aria-label="下一张">›</button>
+            </div>
+            <div class="lb-caption-bar">
+                <h2 class="lb-title"></h2>
+                <span class="lb-counter"></span>
+            </div>
+            <p class="lb-caption"></p>
+            <p class="lb-meta"></p>
+            <p class="lb-meta"> <a class="lb-download" hidden download>下载原图</a></p>
+            <div class="lb-error" hidden><span>图片加载失败</span><button type="button">重试</button></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 灵墨创意. 保留所有权利.</p>
+    </footer>
+    <script type="module" src="js/gallery.js?v=2"></script>
+</body>
+</html>
