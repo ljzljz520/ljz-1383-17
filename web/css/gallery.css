@@ -1,0 +1,33 @@
+:root { color-scheme: light dark; }
+body { font-family: system-ui, sans-serif; margin: 0; }
+header { padding: 1rem 2rem; display: flex; gap: 2rem; align-items: baseline;
+         flex-wrap: wrap; border-bottom: 1px solid #8884; }
+main { padding: 1rem 2rem; }
+.filters label { margin-right: 1rem; }
+.grid { display: grid; gap: .75rem;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.card { display: flex; flex-direction: column; gap: .25rem; padding: .5rem;
+        border: 1px solid #8884; border-radius: 8px; background: none;
+        cursor: pointer; text-align: left; font: inherit; color: inherit; }
+.card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px;
+            background: #8882; }
+.pager { margin-top: 1rem; display: flex; gap: 1rem; align-items: center; }
+table { border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #8884; padding: .3rem .5rem; }
+section { margin-bottom: 2rem; }
+/* lightbox */
+.lb-overlay { position: fixed; inset: 0; background: #000d; z-index: 10;
+              display: flex; align-items: center; justify-content: center; }
+.lb-stage { max-width: min(90vw, 1100px); margin: 0; color: #eee; }
+.lb-stage img { max-width: 100%; max-height: 70vh; display: block;
+                margin: 0 auto; background: #222; }
+.lb-stage figcaption { padding: .75rem 0; }
+.lb-meta { opacity: .7; font-size: .9rem; }
+.lb-close { position: absolute; top: 1rem; right: 1rem; }
+.lb-prev { position: absolute; left: 1rem; top: 50%; }
+.lb-next { position: absolute; right: 1rem; top: 50%; }
+.lb-overlay button { font: inherit; padding: .5rem .9rem; border-radius: 6px;
+                     border: 1px solid #fff6; background: #0006; color: #eee;
+                     cursor: pointer; }
+.lb-overlay button:disabled { opacity: .35; cursor: default; }
+.lb-download { color: #9cf; }

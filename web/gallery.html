@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相册 · 摄影集</title>
+<link rel="stylesheet" href="/web/css/gallery.css">
+</head>
+<body>
+<header>
+  <h1>相册</h1>
+  <nav><a href="/">返回首页</a> · <a href="/admin">管理</a></nav>
+  <div class="filters">
+    <label>分类 <select id="f-category"><option value="">全部</option></select></label>
+    <label>授权 <select id="f-license"><option value="">全部</option></select></label>
+  </div>
+</header>
+<main>
+  <p id="status" role="status"></p>
+  <div id="grid" class="grid"></div>
+  <div class="pager">
+    <button id="prev-page" type="button">上一页</button>
+    <span id="page-info"></span>
+    <button id="next-page" type="button">下一页</button>
+  </div>
+</main>
+<div id="lightbox" style="display:none"></div>
+<script type="module" src="/web/js/gallery.js"></script>
+</body>
+</html>

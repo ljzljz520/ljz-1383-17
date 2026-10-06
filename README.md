@@ -29,3 +29,19 @@
 - **CSS 选择器**：广泛使用伪类 (`:hover`, `:focus`), 子选择器及复杂层叠关系。
 - **盒模型布局**：利用 Flexbox 和 CSS Grid 实现响应式布局。
 - **表单验证**：实时检测用户输入，并通过自定义 UI 组件进行错误提示。
+
+## 相册与灯箱子系统（server/ + web/）
+
+在静态站点之上新增的动态相册：
+
+- **后端**：`server/`（Python 标准库，零依赖）——上传原图、编辑说明、
+  ImageMagick 生成尺寸变体、SQLite 管理分类/授权/排序版本、
+  版本化媒体 URL 与权限校验。启动：`python3 run.py --port 8080`
+  （管理令牌用环境变量 `PHOTOS_ADMIN_TOKEN` 设置，默认 `dev-token`）。
+- **前端**：`web/gallery.html`（公开相册 + 灯箱）、`web/admin.html`
+  （管理页）。灯箱采用服务端序列快照，预加载绑定作品/变体身份，
+  关闭时释放 objectURL 并恢复焦点。
+- **设计取舍**：见 `docs/DESIGN.md`（游标快照 vs 实时重定位、
+  预生成 vs 按需缩略图、并发/像素预算/失败回退、缓存版本化）。
+- **测试**：`python3 tests/test_acceptance.py`（14 项 HTTP 验收）、
+  `node tests/test_frontend_logic.mjs`（10 项前端逻辑）。

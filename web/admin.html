@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相册管理</title>
+<link rel="stylesheet" href="/web/css/gallery.css">
+</head>
+<body>
+<header><h1>相册管理</h1><nav><a href="/gallery">查看相册</a></nav></header>
+<main>
+  <section>
+    <h2>令牌</h2>
+    <input id="token" type="password" placeholder="PHOTOS_ADMIN_TOKEN">
+    <button id="save-token" type="button">保存并载入</button>
+    <p id="msg" role="status"></p>
+  </section>
+  <section>
+    <h2>上传原图</h2>
+    <form id="upload-form">
+      <input type="file" name="file" accept="image/jpeg,image/png" required>
+      <input name="title" placeholder="标题">
+      <input name="description" placeholder="说明">
+      <input name="category_id" placeholder="分类ID" type="number">
+      <input name="license_id" placeholder="授权ID" type="number" required>
+      <button type="submit">上传</button>
+    </form>
+  </section>
+  <section>
+    <h2>授权 / 分类</h2>
+    <input id="lic-name" placeholder="新授权名称">
+    <label><input id="lic-dl" type="checkbox"> 允许原图下载</label>
+    <button id="add-license" type="button">新增授权</button>
+    <input id="lic-revoke-id" type="number" placeholder="授权ID">
+    <button id="revoke-license" type="button">撤销授权</button>
+    <input id="cat-name" placeholder="新分类名称">
+    <button id="add-category" type="button">新增分类</button>
+  </section>
+  <section>
+    <h2>作品</h2>
+    <table>
+      <thead><tr><th>ID</th><th>标题</th><th>说明</th><th>授权</th><th>状态</th><th>操作</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+</main>
+<script type="module" src="/web/js/admin.js"></script>
+</body>
+</html>
